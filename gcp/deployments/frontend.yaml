@@ -42,7 +42,6 @@ spec:
           command:
             - /bin/sh
           image: alpine:3.7
-          imagePullPolicy: Always
           name: initcontainer
           volumeMounts:
             - mountPath: /data

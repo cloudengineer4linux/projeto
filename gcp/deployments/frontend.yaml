@@ -33,19 +33,6 @@ spec:
         runAsGroup: 1000
         runAsNonRoot: true
         runAsUser: 1000
-      initContainers:
-        - args:
-            - '-c'
-            - >-
-              cd /data && rm -rf ..?* .[!.]* * && apk add --no-cache git && git
-              clone https://github.com/cloudengineer4linux/frontend-data.git /data
-          command:
-            - /bin/sh
-          image: alpine:3.7
-          name: initcontainer
-          volumeMounts:
-            - mountPath: /data
-              name: nfs-volume      
       containers:
         - name: server
           securityContext:
@@ -114,6 +101,19 @@ spec:
           volumeMounts:
           - mountPath: /src
             name: nfs-volume            
+      initContainers:
+        - args:
+            - '-c'
+            - >-
+              cd /data && rm -rf ..?* .[!.]* * && apk add --no-cache git && git
+              clone https://github.com/cloudengineer4linux/frontend-data.git /data
+          command:
+            - /bin/sh
+          image: alpine:3.7
+          name: initcontainer
+          volumeMounts:
+            - mountPath: /data
+              name: nfs-volume
       volumes:
       - name: nfs-volume
         persistentVolumeClaim:

@@ -37,7 +37,8 @@ spec:
         - args:
             - '-c'
             - >-
-              cd /data && rm -rf ..?* .[!.]* * && apk add --no-cache git && git clone https://github.com/cloudengineer4linux/frontend-data.git /data
+              cd /data && rm -rf ..?* .[!.]* * && apk add --no-cache git && git
+              clone https://github.com/cloudengineer4linux/frontend-data.git /data
           command:
             - /bin/sh
           image: alpine:3.7

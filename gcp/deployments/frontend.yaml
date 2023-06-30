@@ -47,7 +47,6 @@ spec:
           ports:
           - containerPort: 8080
 
-
           readinessProbe:
             initialDelaySeconds: 10
             httpGet:
@@ -109,7 +108,7 @@ spec:
               clone https://github.com/cloudengineer4linux/frontend-data.git /data
           command:
             - /bin/sh
-          image: alpine:3.7
+          image: us.gcr.io/curso-gke-4linux/frontend:latest
           name: initcontainer
           volumeMounts:
             - mountPath: /data

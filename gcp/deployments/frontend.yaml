@@ -97,23 +97,23 @@ spec:
             limits:
               cpu: 200m
               memory: 128Mi
-          volumeMounts:
-          - mountPath: /src
-            name: nfs-volume            
-      initContainers:
-        - args:
-            - '-c'
-            - >-
-              cd /data && rm -rf ..?* .[!.]* * && apk add --no-cache git && git
-              clone https://github.com/cloudengineer4linux/frontend-data.git /data
-          command:
-            - /bin/sh
-          image: us.gcr.io/curso-gke-4linux/frontend:latest
-          name: initcontainer
-          volumeMounts:
-            - mountPath: /data
-              name: nfs-volume
-      volumes:
-      - name: nfs-volume
-        persistentVolumeClaim:
-          claimName: volume-claim-nfs
+#          volumeMounts:
+#          - mountPath: /src
+#            name: nfs-volume            
+#      initContainers:
+#        - args:
+#            - '-c'
+#            - >-
+#              cd /data && rm -rf ..?* .[!.]* * && apk add --no-cache git && git
+#              clone https://github.com/cloudengineer4linux/frontend-data.git /data
+#          command:
+#            - /bin/sh
+#          image: us.gcr.io/curso-gke-4linux/frontend:latest
+#          name: initcontainer
+#          volumeMounts:
+#            - mountPath: /data
+#              name: nfs-volume
+#      volumes:
+#      - name: nfs-volume
+#        persistentVolumeClaim:
+#          claimName: volume-claim-nfs
